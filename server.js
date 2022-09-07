@@ -1,10 +1,13 @@
 
 const express = require('express')
 const app = express();
-const socket= require('socket.io');
+const socketIO= require('socket.io');
 const path = require('path');
+const morgan = require('morgan');
+let sockets = [];
 app.set("view engine" , "pug");
 app.set("views",path.join(__dirname ,'./src/views'));
+app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname,'./src/static')))
 app.get('/',(req,res)=>{
     res.render('home');
@@ -13,27 +16,10 @@ app.get('/',(req,res)=>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const port = 4000 ;
 const server = app.listen(port , ()=>console.log(`server listening on port ${port}`));
+const io = socketIO(server);
+io.on("connection" , socket=>{
+  socket.on("Hello guys",()=>console.log("the client said hello"));
+});
+

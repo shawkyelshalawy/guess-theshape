@@ -19,9 +19,13 @@
   "homepage": "https://github.com/shawkyelshalawy/guess-theshape#readme",
   "dependencies": {
     "express": "^4.18.1",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.19",
     "path": "^0.12.7",
     "pug": "^3.0.2",
     "socket.io": "^4.5.2"
+  },
+  "devDependencies": {
+    "eslint-plugin-prettier": "^4.2.1"
   }
 }
