@@ -20,6 +20,13 @@ const port = 4000 ;
 const server = app.listen(port , ()=>console.log(`server listening on port ${port}`));
 const io = socketIO(server);
 io.on("connection" , socket=>{
-  socket.on("Hello guys",()=>console.log("the client said hello"));
+  socket.on("newMessage",({message})=>{
+    socket.broadcast.emit("messageNotif",{message ,
+       nickname:socket.nickname || "Anon"
+      })
+  });
+  socket.on("setNickname" ,({nickname})=>{
+    socket.nickname=nickname;
+  })
 });
 
