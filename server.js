@@ -16,7 +16,7 @@ app.get('/',(req,res)=>{
 
 
 
-const port = 4000 ;
+const port = 3000 ;
 const server = app.listen(port , ()=>console.log(`server listening on port ${port}`));
 const io = socketIO(server);
 io.on("connection" , socket=>{
